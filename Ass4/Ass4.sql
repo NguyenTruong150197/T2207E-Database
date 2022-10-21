@@ -25,11 +25,13 @@ create table DONGXE(
 
 create table DANGKYCUNGCAP(
 	MaDKCC varchar(5) primary key,
-	MaNCC varchar(6) not null foreign key references NHACUNGCAP(MaNCC),
+	MaNhaCC varchar(6) not null foreign key references NHACUNGCAP(MaNhaCC),
 	MaLoaiDV varchar(4) not null foreign key references LOAIDICHVU(MaLoaiDV),
 	DongXe varchar(15) not null foreign key references DONGXE(DongXe),
 	MaMP varchar(4) not null foreign key references MUCPHI(MaMP),
-	NgayBatDauCungCap date check(NgayBatDauCungCap <= Getdate()),
-	NgayKetThucCungCap date check(NgayKetThucCungCap > Getdate()),
+	NgayBatDauCungCap date,
+	NgayKetThucCungCap date,
 	SoLuongXeDangKy int
 );
+
+drop table DANGKYCUNGCAP;
