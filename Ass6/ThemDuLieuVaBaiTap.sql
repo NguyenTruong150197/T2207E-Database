@@ -16,6 +16,12 @@ năm như một bí ẩn mật mang tính văn hóa.', 2010, 1, 79000, 100, 1, 1
 insert into BookAuthors(BookCode, AuthorID)
 values('B001', 1);
 
+select * from Publishers;
+select * from Categories;
+select * from Authors;
+select * from Books;
+select * from BookAuthors;
+
 -- Câu 3: Liệt kê các cuốn sách có năm xuất bản từ 2008 đến nay
 select * from Books where PublishYear >= 2008;
 
@@ -35,4 +41,6 @@ select * from Books where PublisherID in (select ID from Publishers where Name l
 select * from Publishers where ID in (select PublisherID from Books where Name like (N'Trí tuệ Do Thái'));
 
 -- Câu 9: Hiển thị các thông tin sau về các cuốn sách: Mã sách, Tên sách, Năm xuất bản, Nhà xuất bản, Loại sách
-select distinct a.Code, a.Name, a.PublishYear, a.
+select distinct a.Code as BookCode, a.Name as BookName, a.PublishYear, b.Name as PublisherName, c.Name as Category from Books a 
+right join Categories c on a.CategoryID = c.ID
+left join Publishers b on a.PublisherID = b.ID;

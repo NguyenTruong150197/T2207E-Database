@@ -16,7 +16,7 @@ create table Authors(
 
 create table Books(
 	Code varchar(20) primary key,
-	Name varchar(255) not null,
+	Name nvarchar(255) not null,
 	Description ntext,
 	PublishYear int not null check(PublishYear <= Getdate()),
 	NumberOfPublish int not null check(NumberOfPublish >= 1),
