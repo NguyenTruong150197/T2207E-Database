@@ -173,3 +173,32 @@ select * from OrderItems A
 	inner join Orders B on A.OrderID = B.ID
 	inner join Products C on A.ProductID = C.ID
 	inner join Customers D on B.CustomerID = D.ID;
+
+
+select * from Customers;
+
+alter table Customers add RewardPoint int; -- Thêm cột
+alter table Customers alter column RewardPoint float; -- Sửa cột (sẽ không sửa được nếu động đến dữ liệu)
+alter table Customers drop column RewardPoint; -- Xóa cột
+
+alter table Customers add check(RewardPoint > 0); -- Thêm ràng buộc
+alter table Customers drop constraint CK__Customers__Rewar__267ABA7A; -- Xóa ràng buộc
+
+alter table Customers add constraint check_point check(RewardPoint > 0); -- Thêm ràng buộc và đặt tên cho ràng buộc đó(để dễ dàng xóa cái ràng buộc đó nếu cần)
+alter table Customers drop constraint check_point; 
+
+create table Index_Students(
+	ID int,
+	Name varchar(50),
+	Age int
+);
+
+insert into Index_Students(ID, Name, Age)
+values(3, 'Nam', 18), (1, 'Dung', 15), (2, 'Khoi', 21), (4, 'Son', 12);
+
+select * from Index_Students;
+
+create clustered index chi_muc_vat_ly on Index_Students(ID); -- Tạo chỉ mục vật lí
+create index chi_muc_phi_vat_ly_age1 on Index_Students(Age); -- Tạo chỉ mục phi vật lí
+create index chi_muc_phi_vat_ly_age2 on Index_Students(Age);
+create index chi_muc_phi_vat_ly_age3 on Index_Students(Age);
