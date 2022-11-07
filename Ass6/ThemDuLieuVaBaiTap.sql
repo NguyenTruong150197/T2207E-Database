@@ -78,7 +78,7 @@ left join Authors d on c.AuthorID = d.ID;
 
 -- Câu 18: Viết Store Procedure:
 -- 1. SP_Them_Sach: thêm mới một cuốn sách
-
+create procedure AddBook @code varchar(20), @name nvarchar(255), 
 
 -- 2. SP_Tim_Sach: Tìm các cuốn sách theo từ khóa
 
